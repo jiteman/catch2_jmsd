@@ -1,20 +1,14 @@
-/*
- *  Created by Joachim on 16/04/2019.
- *  Adapted from donated nonius code.
- *
- *  Distributed under the Boost Software License, Version 1.0. (See accompanying
- *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- */
-
+#pragma once
 // User-facing chronometer
 
-#ifndef TWOBLUECUBES_CATCH_CHRONOMETER_HPP_INCLUDED
-#define TWOBLUECUBES_CATCH_CHRONOMETER_HPP_INCLUDED
 
 #include "catch_clock.hpp"
 #include "catch_optimizer.hpp"
 #include "detail/catch_complete_invoke.hpp"
 #include "../catch_meta.hpp"
+
+#include "catch_lib.h"
+
 
 namespace Catch {
     namespace Benchmark {
@@ -36,16 +30,14 @@ namespace Catch {
             };
         } // namespace Detail
 
-        struct Chronometer {
+        struct JMSD_CATCH_LIBRARY_SHARED_INTERFACE Chronometer {
         public:
             template <typename Fun>
             void measure(Fun&& fun) { measure(std::forward<Fun>(fun), is_callable<Fun(int)>()); }
 
-            int runs() const { return k; }
+            int runs() const;
 
-            Chronometer(Detail::ChronometerConcept& meter, int k)
-                : impl(&meter)
-                , k(k) {}
+            Chronometer(Detail::ChronometerConcept& meter, int k);
 
         private:
             template <typename Fun>
@@ -67,5 +59,3 @@ namespace Catch {
         };
     } // namespace Benchmark
 } // namespace Catch
-
-#endif // TWOBLUECUBES_CATCH_CHRONOMETER_HPP_INCLUDED
