@@ -52,7 +52,12 @@ namespace {
 
         if ((lc < 0) != (rc < 0)) {
             // Potentially we can have +0 and -0
-            return lhs == rhs;
+			return lhs == rhs;
+
+			// seinsei
+//			auto const lc_unsigned = lc < 0 ? -lc : lc;
+//			auto const rc_unsigned = rc < 0 ? -rc : rc;
+//			return lc_unsigned == rc_unsigned;
         }
 
         auto ulpDiff = std::abs(lc - rc);

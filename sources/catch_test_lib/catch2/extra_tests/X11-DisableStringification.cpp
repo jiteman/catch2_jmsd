@@ -8,6 +8,7 @@
 
 struct Hidden {};
 
+bool operator==(Hidden, Hidden);
 bool operator==(Hidden, Hidden) { return true; }
 
 CATCH_TEST_CASE("DisableStringification") {

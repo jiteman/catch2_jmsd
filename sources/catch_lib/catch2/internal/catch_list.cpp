@@ -21,6 +21,8 @@
 #include "catch_tostring.h"
 #include "catch_string_manip.h"
 
+#include "catch_test_case_registry_impl.h"
+
 #include <limits>
 #include <algorithm>
 #include <iomanip>

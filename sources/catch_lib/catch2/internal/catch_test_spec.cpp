@@ -9,6 +9,8 @@
 #include "catch_string_manip.h"
 #include "catch_interfaces_config.h"
 
+#include "catch_test_case_registry_impl.h"
+
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -91,7 +93,7 @@ namespace Catch {
         } );
         return matches;
     }
-    
+
     const TestSpec::vectorStrings& TestSpec::getInvalidArgs() const{
         return  (m_invalidArgs);
     }

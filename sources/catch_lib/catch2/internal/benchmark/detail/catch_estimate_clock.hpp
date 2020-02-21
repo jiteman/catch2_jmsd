@@ -1,28 +1,40 @@
-/*
- *  Created by Joachim on 16/04/2019.
- *  Adapted from donated nonius code.
- *
- *  Distributed under the Boost Software License, Version 1.0. (See accompanying
- *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- */
-
+#pragma once
  // Environment measurement
 
-#ifndef TWOBLUECUBES_CATCH_DETAIL_ESTIMATE_CLOCK_HPP_INCLUDED
-#define TWOBLUECUBES_CATCH_DETAIL_ESTIMATE_CLOCK_HPP_INCLUDED
-
-#include "../catch_clock.hpp"
-#include "../catch_environment.hpp"
 #include "catch_stats.hpp"
 #include "catch_measure.hpp"
 #include "catch_run_for_at_least.hpp"
-#include "../catch_clock.hpp"
+
+#include "catch2/internal/benchmark/catch_clock.hpp"
+#include "catch2/internal/benchmark/catch_environment.hpp"
 
 #include <algorithm>
 #include <iterator>
 #include <tuple>
 #include <vector>
 #include <cmath>
+
+
+namespace Catch {
+namespace Benchmark {
+
+
+template< typename Iterator >
+double mean( Iterator first, Iterator last );
+
+
+namespace Detail {
+
+
+template< typename Iterator >
+OutlierClassification classify_outliers( Iterator first, Iterator last );
+
+
+} // namespace Detail
+
+
+} // namespace Benchmark
+} // namespace Catch
 
 namespace Catch {
     namespace Benchmark {
@@ -57,6 +69,7 @@ namespace Catch {
                 return run_for_at_least<Clock>(std::chrono::duration_cast<ClockDuration<Clock>>(warmup_time), warmup_seed, &resolution<Clock>)
                     .iterations;
             }
+
             template <typename Clock>
             EnvironmentEstimate<FloatDuration<Clock>> estimate_clock_resolution(int iterations) {
                 auto r = run_for_at_least<Clock>(std::chrono::duration_cast<ClockDuration<Clock>>(clock_resolution_estimation_time), iterations, &resolution<Clock>)
@@ -66,6 +79,7 @@ namespace Catch {
                     classify_outliers(r.begin(), r.end()),
                 };
             }
+
             template <typename Clock>
             EnvironmentEstimate<FloatDuration<Clock>> estimate_clock_cost(FloatDuration<Clock> resolution) {
                 auto time_limit = std::min(resolution * clock_cost_estimation_tick_limit, FloatDuration<Clock>(clock_cost_estimation_time_limit));
@@ -109,5 +123,3 @@ namespace Catch {
         } // namespace Detail
     } // namespace Benchmark
 } // namespace Catch
-
-#endif // TWOBLUECUBES_CATCH_DETAIL_ESTIMATE_CLOCK_HPP_INCLUDED

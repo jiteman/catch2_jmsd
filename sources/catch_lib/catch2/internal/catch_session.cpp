@@ -23,6 +23,8 @@
 #include "catch_windows_h_proxy.h"
 #include "../reporters/catch_reporter_listening.h"
 
+#include "catch_test_case_registry_impl.h"
+
 #include <cstdlib>
 #include <iomanip>
 #include <set>

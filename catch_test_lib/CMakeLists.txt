@@ -34,6 +34,12 @@ set( FILES_TO_REMOVE_HEADER_AND_SOURCE
 #	"introspective_tests/InternalBenchmark.tests.cpp"
 )
 
+if( UNIX )
+	list( APPEND FILES_TO_REMOVE_HEADER_AND_SOURCE
+		"extra_tests/X90-WindowsHeaderInclusion.cpp" )
+elseif( WIN32 )
+endif()
+
 JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files FILES_TO_REMOVE_HEADER_AND_SOURCE )
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )

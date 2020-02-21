@@ -1,12 +1,4 @@
-/*
- *  Created by Phil on 7/1/2011
- *  Copyright 2010 Two Blue Cubes Ltd. All rights reserved.
- *
- *  Distributed under the Boost Software License, Version 1.0. (See accompanying
- *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- */
-#ifndef TWOBLUECUBES_CATCH_TEST_CASE_REGISTRY_IMPL_HPP_INCLUDED
-#define TWOBLUECUBES_CATCH_TEST_CASE_REGISTRY_IMPL_HPP_INCLUDED
+#pragma once
 
 #include "catch_test_registry.h"
 #include "catch_test_spec.h"
@@ -66,6 +58,3 @@ namespace Catch {
 
 
 } // end namespace Catch
-
-
-#endif // TWOBLUECUBES_CATCH_TEST_CASE_REGISTRY_IMPL_HPP_INCLUDED

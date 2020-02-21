@@ -1,17 +1,9 @@
-/*
- *  Created by Joachim on 16/04/2019.
- *  Adapted from donated nonius code.
- *
- *  Distributed under the Boost Software License, Version 1.0. (See accompanying
- *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- */
-
+#pragma once
 // Invoke with a special case for void
 
-#ifndef TWOBLUECUBES_CATCH_DETAIL_COMPLETE_INVOKE_HPP_INCLUDED
-#define TWOBLUECUBES_CATCH_DETAIL_COMPLETE_INVOKE_HPP_INCLUDED
-
-#include "../../catch_enforce.h"
+#include "catch2/internal/catch_enforce.h"
+#include "catch2/internal/catch_interfaces_capture.h"
+#include "catch2/internal/catch_interfaces_registry_hub.h"
 
 #include <type_traits>
 #include <utility>
@@ -54,16 +46,14 @@ namespace Catch {
             const std::string benchmarkErrorMsg = "a benchmark failed to run successfully";
         } // namespace Detail
 
-        template <typename Fun>
-        Detail::CompleteType_t<Detail::ResultOf_t<Fun()>> user_code(Fun&& fun) {
-            CATCH_TRY{
-                return Detail::complete_invoke(std::forward<Fun>(fun));
-            } CATCH_CATCH_ALL{
-                getResultCapture().benchmarkFailed(translateActiveException());
-                CATCH_RUNTIME_ERROR(Detail::benchmarkErrorMsg);
+        template< typename Fun >
+        Detail::CompleteType_t< Detail::ResultOf_t< Fun() > > user_code( Fun &&fun ) {
+            CATCH_TRY {
+                return Detail::complete_invoke( ::std::forward< Fun >( fun ) );
+            } CATCH_CATCH_ALL {
+                getResultCapture().benchmarkFailed( translateActiveException() );
+                CATCH_RUNTIME_ERROR( Detail::benchmarkErrorMsg );
             }
         }
     } // namespace Benchmark
 } // namespace Catch
-
-#endif // TWOBLUECUBES_CATCH_DETAIL_COMPLETE_INVOKE_HPP_INCLUDED
