@@ -30,8 +30,8 @@ set( FILES_TO_REMOVE_HEADER_AND_SOURCE
 	"extra_tests/X03-DisabledExceptions-DefaultHandler.cpp"
 	"extra_tests/X04-DisabledExceptions-CustomHandler.cpp"
 	"extra_tests/X12-CustomDebugBreakMacro.cpp"
-#	"extra_tests/X20-BenchmarkingMacros.cpp"
-#	"introspective_tests/InternalBenchmark.tests.cpp"
+	"extra_tests/X20-BenchmarkingMacros.cpp"
+	"introspective_tests/InternalBenchmark.tests.cpp"
 )
 
 if( UNIX )
