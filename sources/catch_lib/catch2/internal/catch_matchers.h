@@ -42,6 +42,11 @@ namespace Matchers {
 #    pragma clang diagnostic ignored "-Wnon-virtual-dtor"
 #endif
 
+#ifdef _MSC_VER
+#    pragma warning( push )
+#    pragma warning( disable: 5204 )
+#endif
+
         template<typename ObjectT>
         struct MatcherMethod {
             virtual bool match( ObjectT const& arg ) const = 0;
@@ -54,6 +59,10 @@ namespace Matchers {
         struct MatcherMethod<NSString*> {
             virtual bool match( NSString* arg ) const = 0;
         };
+#endif
+
+#ifdef _MSC_VER
+#    pragma warning( pop )
 #endif
 
 #ifdef __clang__

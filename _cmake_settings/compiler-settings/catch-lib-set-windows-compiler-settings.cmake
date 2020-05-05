@@ -6,6 +6,7 @@ if ( WIN32 )
 	## list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd" ) #
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4365" ) # '': conversion from '' to '', signed/unsigned mismatch
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4583" ) # '': destructor is not implicitly called
+#	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd5204" ) # '': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
 

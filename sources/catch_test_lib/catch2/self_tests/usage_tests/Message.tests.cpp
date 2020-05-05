@@ -223,6 +223,7 @@ CATCH_TEST_CASE( "CATCH_CAPTURE can deal with complex expressions", "[messages][
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable:4709) // comma in indexing operator
+#pragma warning( disable: 5061 ) // the use of a comma operator as a subscript expression has been deprecated
 #endif
 
 template <typename T1, typename T2>
